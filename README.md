@@ -1,4 +1,4 @@
-# JS Mini Projects for practice 
+# JS Memory Game 
 
 ## FreeCodeCamp tutorials: 
 
