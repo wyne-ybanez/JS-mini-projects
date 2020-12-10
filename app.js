@@ -71,7 +71,23 @@ function createBoard() {
     // Loop over them giving them an ID of zero to eleven
         card.setAttribute('data-id', i)
     // To check if the card has been clicked - activate flip card function
-        card.addEventListener('click', flipcard)
+        card.addEventListener('click', function() {
+          var cardId = this.getAttribute('data-id')
+
+    // push the cards from the card array
+    cardsChosen.push(cardArray[cardId].name)
+    cardsChosenId.push(cardId)
+
+    /* when flipcard activates - a card has been picked
+    add an image to the square based on the card Id */
+    this.setAttribute('src', cardArray[cardId].img)
+
+    if (cardsChosen.length === 2) {
+        /* buffer to make sure match doesn't happen too quickly
+        check for match after 500 seconds */
+        setTimeout(checkFormatch, 500)
+    }
+        })
         grid.appendChild(card)
     }
 }
@@ -89,6 +105,8 @@ function checkForMatch() {
         alert ('You found a match')
         cards[optionOneId].setAttribute('src', 'images/white.png')
         cards[optionTwoId].setAttribute('src', 'images/white.png')
+        cards[optionOneId].removeEventListener('click', flipCard)
+        cards[optionTwoId].removeEventListener('click', flipCard)
         // push winning matches to empty array 
         cardsWon.push(cardsChosen) 
 
@@ -108,25 +126,6 @@ function checkForMatch() {
     // when we know we have collected all the possible cards
     if (cardsWon.length === cardArray.length/2) {
         resultDisplay.textContent = 'Congratulations! You found them all!'
-    }
-}
-
-// flip your card 
-function flipCard() {
-    var cardId = this.getAttribute('data-id')
-
-    // push the cards from the card array
-    cardsChosen.push(cardArray[cardId].name)
-    cardsChosenId.push(cardId)
-
-    /* when flipcard activates - a card has been picked
-    add an image to the square based on the card Id */
-    this.setAttribute('src', cardArray[cardId].img)
-
-    if (cardsChosen.length === 2) {
-        /* buffer to make sure match doesn't happen too quickly
-        check for match after 500 seconds */
-        setTimeout(checkFormatch, 500)
     }
 }
 
