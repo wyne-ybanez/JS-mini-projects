@@ -1,5 +1,7 @@
 # JS Memory Game 
 
+Live game:  https://wyne-ybanez.github.io/JS-mini-projects/
+
 ## FreeCodeCamp tutorials: 
 
 FreeCodeCamp.org: https://www.youtube.com/watch?v=lhNdUVh3qCc&ab_channel=freeCodeCamp.org
